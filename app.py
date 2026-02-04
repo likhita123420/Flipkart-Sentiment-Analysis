@@ -9,10 +9,6 @@ from nltk.corpus import stopwords, wordnet
 from nltk.stem import SnowballStemmer, WordNetLemmatizer
 
 
-nltk.download('punkt')
-nltk.download('stopwords')
-nltk.download('wordnet')
-nltk.download('omw-1.4')
 
 
 # -----------------------------
@@ -21,6 +17,7 @@ nltk.download('omw-1.4')
 nltk.download("punkt")
 nltk.download("stopwords")
 nltk.download("wordnet")
+nltk.download('omw-1.4')
 
 # -----------------------------
 # Load model (Pipeline)
@@ -74,3 +71,4 @@ if st.button("Predict Sentiment"):
         else:
 
             st.error("❌ Negative Review")
+
