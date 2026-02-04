@@ -4,32 +4,22 @@ import re
 import nltk
 import string
 import contractions
-import os
-from nltk import word_tokenize
+
+from nltk.tokenize import wordpunct_tokenize
 from nltk.corpus import stopwords, wordnet
 from nltk.stem import SnowballStemmer, WordNetLemmatizer
 
 # -----------------------------
-# NLTK setup (run once)
+# NLTK Downloads (SAFE)
 # -----------------------------
-@st.cache_resource
-def setup_nltk():
-    nltk.download("punkt")
-    nltk.download("stopwords")
-    nltk.download("wordnet")
-    nltk.download("omw-1.4")
-
-setup_nltk()
+nltk.download("stopwords")
+nltk.download("wordnet")
+nltk.download("omw-1.4")
 
 # -----------------------------
-# Load model (cached)
+# Load Model
 # -----------------------------
-@st.cache_resource
-def load_model():
-    with open("best_sentiment_model.pkl", "rb") as f:
-        return pickle.load(f)
-
-model = load_model()
+model = pickle.load(open("best_sentiment_model.pkl", "rb"))
 
 # -----------------------------
 # Text Cleaning Setup
@@ -42,23 +32,27 @@ def clean(doc, stem=True):
     doc = contractions.fix(doc)
     doc = re.sub(r"[^a-zA-Z]", " ", doc)
     doc = doc.lower()
-    tokens = word_tokenize(doc)
-    tokens = [t for t in tokens if t not in stop_words]
+
+    tokens = wordpunct_tokenize(doc)
+    tokens = [t for t in tokens if t not in stop_words and t not in string.punctuation]
 
     if stem:
         tokens = [stemmer.stem(t) for t in tokens]
     else:
-        tokens = [lemmatizer.lemmatize(t, pos='v') for t in tokens]
+        tokens = [lemmatizer.lemmatize(t) for t in tokens]
 
     return " ".join(tokens)
 
 # -----------------------------
 # Streamlit UI
 # -----------------------------
-st.set_page_config(page_title="Flipkart Sentiment Analysis", layout="centered")
+st.set_page_config(
+    page_title="Flipkart Sentiment Analysis",
+    layout="centered"
+)
 
 st.title("🛒 Flipkart Review Sentiment Analysis")
-st.write("Enter a product review to predict whether it is **Positive or Negative**.")
+st.write("Enter a product review to predict whether it is **Positive** or **Negative**.")
 
 review = st.text_area("✍️ Enter Review Text")
 
