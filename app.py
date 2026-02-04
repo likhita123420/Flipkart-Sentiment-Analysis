@@ -8,6 +8,13 @@ from nltk import word_tokenize
 from nltk.corpus import stopwords, wordnet
 from nltk.stem import SnowballStemmer, WordNetLemmatizer
 
+
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('wordnet')
+nltk.download('omw-1.4')
+
+
 # -----------------------------
 # NLTK Downloads (run once)
 # -----------------------------
@@ -65,4 +72,5 @@ if st.button("Predict Sentiment"):
         if prediction == 1:
             st.success("✅ Positive Review")
         else:
+
             st.error("❌ Negative Review")
