@@ -75,3 +75,23 @@ These metrics provide a complete evaluation of classification performance — es
 1. Clone the repository:
    ```bash
    git clone https://github.com/likhita123420/Flipkart-Sentiment-Analysis.git
+
+Open the notebook in Jupyter:
+
+jupyter notebook
+Run all cells sequentially
+
+🧪 Sample Outputs
+Input: "Excellent product! Worth every penny."
+Output: Positive
+
+Input: "Very disappointed, product broke in 2 days."
+Output: Negative
+
+📌 Conclusion
+
+This project applies machine learning and NLP techniques to analyze customer reviews and understand sentiment trends.
+It is well suited for data science portfolios and demonstrates proficiency in:
+Text preprocessing
+Feature extraction
+Model building & evaluation
