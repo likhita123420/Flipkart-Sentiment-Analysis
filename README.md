@@ -88,7 +88,10 @@ Output: Positive
 Input: "Very disappointed, product broke in 2 days."
 Output: Negative
 
-📌 Conclusion
+# Streamlit app
+https://flipkart-sentiment-analysis-akk8dcqzcyqzzeuwyhf6ly.streamlit.app/
+
+# 📌 Conclusion
 
 This project applies machine learning and NLP techniques to analyze customer reviews and understand sentiment trends.
 It is well suited for data science portfolios and demonstrates proficiency in:
